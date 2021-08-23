@@ -6,6 +6,8 @@ CHECKMON=$(xrandr --listmonitors)
 CHECKMODES=$(xrandr)
 # Path to log file
 LOGS='/home/altus/.logs/xrandr/logs.txt'
+# Use for debugging in local folder
+# LOGS='test.txt'
 # time of log
 time=$(date +%R)
 # Date of log
@@ -27,18 +29,21 @@ detectExternal () {
 # set the monitor var for use in next fuctions
 MONITOR="$(detectExternal)"
 
+
 # check if mode already exists if not add with xrandr
 function confirmMode () {
   if  echo $CHECKMODES | grep -q "$1";then 
-    echo "=> Mode: "$1" already exists. For $MONITOR." >> ${LOGS}
-    echo Date: "$date --- Time: $time." >> ${LOGS}
+    # echo "=> Mode: "$1" already exists. For $MONITOR." >> ${LOGS}
+    # echo Date: "$date --- Time: $time." >> ${LOGS}
+    return 0
   else 
-    xrandr --newmode $1 $2
-    xrandr --addmode $MONITOR $1 
+    xrandr --newmode $1 $2 
+    xrandr --addmode $MONITOR $1
     echo "=> Mode: $1 mode added to $MONITOR." >> ${LOGS}
-    echo Date: "$date --- Time: $time." >> ${LOGS}
+    echo Date: "$date --- Time: $time." >> ${LOGS} 
   fi
 }
+
 
 # 1368x768_60 same as laptop - good foe extended desktop
 confirmMode $modename1 "85.25  1368 1440 1576 1784  768 771 781 798 -hsync +vsync"

@@ -1,0 +1,6 @@
+=> Mode: extended already exists. For HDMI-1.
+Date: 2021-08-23 --- Time: 12:47.
+=> Mode: large already exists. For HDMI-1.
+Date: 2021-08-23 --- Time: 12:47.
+Date: 2021-08-23 --- Time: 12:48.
+Date: 2021-08-23 --- Time: 12:48.
