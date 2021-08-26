@@ -5,9 +5,9 @@ CHECKMON=$(xrandr --listmonitors)
 # List all xrandr properties to see if mode already exists
 CHECKMODES=$(xrandr)
 # Path to log file
-LOGS='/home/altus/.logs/xrandr/logs.txt'
+
 # Use for debugging in local folder
-# LOGS='test.txt'
+LOGS='test.txt'
 # time of log
 time=$(date +%R)
 # Date of log
@@ -18,7 +18,7 @@ modename2="large"
 
 # Check to see what the hdmi connection is named
 detectExternal () {
-  if echo $CHECKMON | grep -q 'HDMI-1-1'; then 
+  if echo $CHECKMON | grep -q 'HDMI-1-1'; then
     local mon="HDMI-1-1"
     echo "$mon"
   elif echo $CHECKMON | grep -q 'HDMI-1'; then
@@ -32,7 +32,7 @@ MONITOR="$(detectExternal)"
 
 # check if mode already exists if not add with xrandr
 function confirmMode () {
-  if  echo $CHECKMODES | grep -q "$1";then 
+  if  echo $CHECKMODES | grep -q "$1";then
     # echo "=> Mode: "$1" already exists. For $MONITOR." >> ${LOGS}
     # echo Date: "$date --- Time: $time." >> ${LOGS}
     return 0
@@ -40,7 +40,7 @@ function confirmMode () {
     xrandr --newmode $1 $2 
     xrandr --addmode $MONITOR $1
     echo "=> Mode: $1 mode added to $MONITOR." >> ${LOGS}
-    echo Date: "$date --- Time: $time." >> ${LOGS} 
+    echo "=> Date: $date --- Time: $time." >> ${LOGS} 
   fi
 }
 
