@@ -1,7 +1,8 @@
 #!/usr/bin/bash
-starterhtml="$HOME/Documents/Dev/Useful-Shell-Scripts/html-starter/index.html"
-startercss="$HOME/Documents/Dev/Useful-Shell-Scripts/html-starter/style.css"
-starterjs="$HOME/Documents/Dev/Useful-Shell-Scripts/html-starter/app.js"
+baseURL="$HOME/bin/html-start"
+starterhtml="$baseURL/index.html"
+startercss="$baseURL/style.css"
+starterjs="$baseURL/app.js"
 
 if [ -f "$starterhtml" ]; then   
   cat $starterhtml >> "index.html"
