@@ -29,18 +29,19 @@ detectExternal () {
 # set the monitor var for use in next fuctions
 MONITOR="$(detectExternal)"
 
-
 # check if mode already exists if not add with xrandr
 function confirmMode () {
   if  echo $CHECKMODES | grep -q "$1";then
     # echo "=> Mode: "$1" already exists. For $MONITOR." >> ${LOGS}
     # echo Date: "$date --- Time: $time." >> ${LOGS}
     return 0
-  else 
-    xrandr --newmode $1 $2 
+  else
+    echo "++------------------++" >> ${LOGS}
+    echo "Date: $date -- Time $time" >> ${LOGS}
+    echo "++------------------++" >> ${LOGS}
+    xrandr --newmode $1 $2
     xrandr --addmode $MONITOR $1
     echo "=> Mode: $1 mode added to $MONITOR." >> ${LOGS}
-    echo "=> Date: $date --- Time: $time." >> ${LOGS} 
   fi
 }
 
